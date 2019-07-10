@@ -19,8 +19,8 @@
         <div class="container">
           <div class="card-deck">
             {% for product in products %}
-            <div class="card mb-0 shadow-sm">
-              <img src="data:image/png;base64,{{ product.qr_code }}" class="card-img-top" alt="{{ product.name }}">
+            <div class="card mb-0 shadow-sm"{% if product.stock == "Sold Out" %} style="opacity: 0.6"{% endif %}>
+              <img src="data:image/png;base64,{{ product.qr_code }}" class="card-img-top" alt="{{ product.name }}"{% if product.stock == "Sold Out" %} style="opacity: 0.3"{% endif %}>
               <div class="card-body">
                 <h5 class="card-title">{{ product.name }}</h5>
                 <p class="card-text">{{ product.stock }}</p>
